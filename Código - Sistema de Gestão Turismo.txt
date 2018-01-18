@@ -1,0 +1,1574 @@
+using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading; 
+
+namespace GOODTURISM
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //MUDANÇA DE COR DO CONSOLE
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Clear();
+
+            //PRIMEIRA TELA DO PROGRAMA
+            Console.Write("\n\n\t\t\t\t------------------- BEM VINDO AO SISTEMA DA AGENCIA GOODTURISM ----------------\n");
+            Console.WriteLine("\t\t\t\t\t                                      _");
+            Console.WriteLine("\t\t\t\t\t			                            (  )");
+            Console.WriteLine("\t\t\t\t\t			    _ .                  ( `  ) . )");
+            Console.WriteLine("\t\t\t\t\t			  (  _ )_               (_, _(  ,_)_)");
+            Console.WriteLine("\t\t\t\t\t            	 	(_  _(_ ,)");
+
+            Console.WriteLine("\t\t\t\t\t _________________________             _____");
+            Console.WriteLine("\t\t\t\t\t|                         \\            \\ U \\__      _____");
+            Console.WriteLine("\t\t\t\t\t|   SISTEMA DE GESTÃO DA   \\____________\\   \\/_______\\___\\___________");
+            Console.WriteLine("\t\t\t\t\t|       GOODTURISM         /          < /_/   .....................  `-.");
+            Console.WriteLine("\t\t\t\t\t|_________________________/            `-----------,----,--------------'");
+            Console.WriteLine("\t\t\t\t\t                                                 _/____/");
+            Console.Write("\n\t\t\t\t--------------------------------------------------------------------------------\n");
+            Console.WriteLine("\t\t\t\t\t\t   PRESSIONE ENTER PARA ENTRAR NO MENU PRINCIPAL");
+
+            Console.ReadKey();
+
+            //LOOP REPITA COM O MENU DO PROGRAMA
+            int opcao;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("\n\n");
+                Console.WriteLine("\t\t\t\t _________________________________________________________________");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          SISTEMA DE GERENCIAMENTO DA AGENCIA GOOD TURISM        |");
+                Console.WriteLine("\t\t\t\t|_________________________________________________________________|");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          MENU PRINCIPAL:                                        |");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          1.  CADASTRO DE CLIENTE                                |");
+                Console.WriteLine("\t\t\t\t|          2.  CONSULTA DE CLIENTE                                |");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          3.  CADASTRO DE FUNCIONARIO                            |");
+                Console.WriteLine("\t\t\t\t|          4.  CONSULTA DE FUNCIONARIO                            |");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          5.  CADASTRO DE HOTEL                                  |");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          6.  CADASTRO DE PACOTE                                 |");
+                Console.WriteLine("\t\t\t\t|          7.  CADASTRO DA HOSPEDAGEM                             |");
+                Console.WriteLine("\t\t\t\t|          8.  CADASTRO DOS DADOS DE PAGAMENTO                    |");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          9.  CONSULTA DE PACOTE                                 |");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|          10. SOBRE O SISTEMA                                    |");
+                Console.WriteLine("\t\t\t\t|          0.  SAIR DO SISTEMA                                    |");
+                Console.WriteLine("\t\t\t\t|                                                                 |");
+                Console.WriteLine("\t\t\t\t|_________________________________________________________________|");
+
+                Console.Write("\t\t\t\t\t   DIGITE UMA DAS OPÇÕES: ");
+
+                //SE ESCREVER OUTRA COISA ALEM DE NUMERO DA LOOP 
+                while (!(int.TryParse(Console.ReadLine(), out opcao)))
+                {
+                    Console.Write("\t\t\t\t\t   SELECIONE UMA DAS OPÇÕES: ");
+                }
+
+                Console.WriteLine("\n");
+                //COMEÇO DO MENU SWITCH CASE
+                switch (opcao)
+                {
+                    case 1:
+                        CadastroCliente();
+                        break;
+
+                    case 2:
+                        ConsultaCliente();
+                        break;
+
+                    case 3:
+                        CadastroFuncionario();
+                        break;
+
+                    case 4:
+                        ConsultaFuncionario();
+                        break;
+
+                    case 5:
+                        CadastroHotel();
+                        break;
+
+                    case 6:
+                        CadastroPacote();
+                        break;
+
+                    case 7:
+                        CadastroHospedagem();
+                        break;
+
+                    case 8:
+                        DadosPagamento();
+                        break;
+
+                    case 9:
+                        ConsultaPacote();
+                        break;
+
+                    case 10:
+                        Sobre();
+                        break;
+
+                    case 0:
+                        Console.Write("\t\t\t\t\t   O Sistema será encerrado.");
+                        Console.Write("\n\n\t\t\t\t\t   Desenvolvido pela empresa GoodResults.");
+                        break;
+
+                    default:
+                        Console.WriteLine("\t\t\t\t\t   Digite somente uma das opções existentes!");
+                        break;
+                }
+                
+                Console.Write("\n\t\t\t\t\t   Digite enter para continuar.\n\n\n");
+                Console.ReadKey();
+                Console.Clear();
+            } while (opcao != 0);
+
+        }
+
+        //------------------ CLASSE SOBRE -----------------------------
+        private static void Sobre()
+        {
+            Console.Clear();
+            Console.WriteLine("\n\n\t = - = - = - = - = - = - SOBRE O SISTEMA = - = - = - = - = - = - ");
+            Console.WriteLine("\n\tO sistema de gerenciamento da agência de turismo GoodTurism foi desenvolvido ");
+            Console.WriteLine("\n\tno segundo semestre de 2017, pela empresa GoodResults.");
+
+        }
+
+
+
+        //------------------ CLASSE COM O CADASTRO DO CLIENTE -----------------------------
+        private static void CadastroCliente()
+        {
+            {
+                //DECLARANDO AS VARIÁVEIS
+                int codCadastro = 0;
+                string nome, sobrenome, dtnascimento, email, telefone, endereco, bairro, cidade, estado;
+                char sexo;
+                double cpf, cep;
+
+
+                //COMEÇANDO O LOOPING DO CADASTRO
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n = - = - = - = - = - = - CADASTRO DO CLIENTE = - = - = - = - = - = - \n");
+                    Console.WriteLine("\n\tDigite o código para cadastrar o cliente ");
+                    Console.Write("\tou digite [0] para voltar ao menu: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codCadastro)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                    }
+
+                    //SE O ARQUIVO TXT DESSE CÓDIGO JÁ EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                    while (File.Exists(@"C:\Clientes\Cliente_Codigo" + codCadastro + ".txt"))
+                    {
+                        Console.WriteLine("\n\tEsse código já existe. ");
+                        Console.WriteLine("\tEntre na consulta do cliente para verificar os códigos existentes ou ");
+                        Console.Write("\tdigite novamente o codigo do cliente ou digite [0] para voltar ao menu: ");
+                        while (!int.TryParse(Console.ReadLine(), out codCadastro))
+                        {
+                            Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                        }
+
+                        if (codCadastro == 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    // A OPÇÃO DE VOLTAR AO MENU
+                    if (codCadastro == 0)
+                    {
+                        Console.WriteLine("\n\tVoltando ao menu anterior...");
+                    }
+                    //COLOQUE UM CODIGO PARA CONTINUAR
+                    else
+                    {
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o seu gênero (M/F/I): ");
+                        char.TryParse(Console.ReadLine(), out sexo);
+                        while ((sexo != 'M') && (sexo != 'm') && (sexo != 'F') && (sexo != 'f') && (sexo != 'i') && (sexo != 'I')) //certifica se o sexo é válido
+                        {
+                            Console.Write("\tDigite umas das seguintes opções(M/F/I):");
+                            char.TryParse(Console.ReadLine(), out sexo);
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o nome: ");
+                        nome = Console.ReadLine();
+                        while (nome == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            nome = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o sobrenome: ");
+                        sobrenome = Console.ReadLine();
+                        while (sobrenome == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            sobrenome = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a data de nascimento: ");
+                        dtnascimento = Console.ReadLine();
+                        while (dtnascimento == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            dtnascimento = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o CPF: ");
+                        while (!(double.TryParse(Console.ReadLine(), out cpf)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha: ");
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o email: ");
+                        email = Console.ReadLine();
+                        while (email == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            email = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o telefone: ");
+                        telefone = Console.ReadLine();
+                        while (telefone == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            telefone = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o endereço: ");
+                        endereco = Console.ReadLine();
+                        while (endereco == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            endereco = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o CEP: ");
+                        while (!(double.TryParse(Console.ReadLine(), out cep)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha: ");
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o bairro: ");
+                        bairro = Console.ReadLine();
+                        while (bairro == "")
+                        {
+
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            bairro = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a cidade: ");
+                        cidade = Console.ReadLine();
+                        while (cidade == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha  ");
+                            cidade = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o estado(UF): ");
+                        estado = Console.ReadLine();
+                        while (estado == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha  ");
+                            endereco = Console.ReadLine();
+                        }
+
+                        //CRIAR PASTA PARA ARMAZENAR DADOS
+
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Clientes");
+
+                        if (!dir.Exists)
+                            try
+                            {
+                                //PARA SE A PASTA NAO FOR CRIADA
+                                dir.Create();
+                                Console.WriteLine("\n\tDiretório criado com sucesso.");
+                            }
+
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("\n\tNão foi possível criar o diretório: {0}", e.ToString());
+                            }
+                            finally { }
+
+
+                        FileStream CriaArquivo = new FileStream(@"C:\Clientes\Cliente_Codigo" + codCadastro + ".txt", FileMode.Append);
+                        //SALVANDO DADOS
+                        StreamWriter Arquivo = new StreamWriter(CriaArquivo, Encoding.ASCII);
+                        Arquivo.WriteLine("");
+                        Arquivo.WriteLine("= - = - = - = - = - = -  REGISTRO DO CLIENTE " + nome + " " + codCadastro + " - = - = - = - = - = - = - =");
+                        Arquivo.WriteLine("");
+                        Arquivo.Write("Codigo: "); Arquivo.WriteLine(Convert.ToString(codCadastro));
+                        Arquivo.Write("Nome: "); Arquivo.WriteLine(nome);
+                        Arquivo.Write("Sobrenome: "); Arquivo.WriteLine(sobrenome);
+                        Arquivo.Write("Data de Nascimento "); Arquivo.WriteLine(dtnascimento);
+                        Arquivo.Write("Sexo: "); Arquivo.WriteLine(sexo);
+                        Arquivo.Write("CPF: "); Arquivo.WriteLine(cpf);
+                        Arquivo.Write("Email: "); Arquivo.WriteLine(email);
+                        Arquivo.Write("Telefone: "); Arquivo.WriteLine(telefone);
+                        Arquivo.Write("Endereco: "); Arquivo.WriteLine(endereco);
+                        Arquivo.Write("CEP: "); Arquivo.WriteLine(cep);
+                        Arquivo.Write("Bairro: "); Arquivo.WriteLine(bairro);
+                        Arquivo.Write("Cidade: "); Arquivo.WriteLine(cidade);
+                        Arquivo.Write("Estado: "); Arquivo.WriteLine(estado);
+
+
+                        Arquivo.Flush();
+                        Arquivo.Close();
+                        CriaArquivo.Close();
+
+                        //NOVO ARQUIVO QUE IRA SALVAR SÓ OS CODIGOS PARA SER VISUALIZADO NA CONSULTA PACOTE
+                        FileStream CriaArquivo2 = new FileStream(@"C:\Clientes\TodosClientes.txt", FileMode.Append);
+                        StreamWriter Arquivo2 = new StreamWriter(CriaArquivo2, Encoding.ASCII);
+                        Arquivo2.WriteLine(""); ;
+                        Arquivo2.Write("Codigo do cliente: "); Arquivo2.WriteLine(Convert.ToString(codCadastro));
+
+                        Arquivo2.Flush();
+                        Arquivo2.Close();
+                        CriaArquivo2.Close();
+
+                        Console.WriteLine("\n\tCliente cadastrado com sucesso!\n");
+                        Console.WriteLine("\n\tAperte enter para continuar.");
+                        Console.ReadKey();
+                        Thread.Sleep(600);
+                        Console.Clear();
+                    }
+                }
+                // CONDIÇÃO DO LOOP DO CADASTRO
+                while (codCadastro != 0);
+            }
+        }
+        //FINAL DO CADASTRO DO CLIENTE
+
+
+        //------------------ CLASSE COM O CONSULTA DO CLIENTE -----------------------------
+        private static void ConsultaCliente()
+        {
+
+            int codCadastro;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("\n\n- = - = - = - = - = - = - = CONSULTA DO CLIENTE - = - = - = - = - = - = - =");
+
+                //SE O ARQUIVO TXT NÃO EXISTIR IRA AVISAR e permitir voltar ao menu
+                if (!(File.Exists(@"C:\Clientes\TodosClientes.txt")))
+                {
+                    Console.WriteLine("\n\tO arquivo com dos registro não foi encontrado por favor faça um registro.");
+                    Console.Write("\tdigite [0] para voltar ao menu: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codCadastro)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite novamente: ");
+                    }
+                    if (codCadastro == 0)
+                    {
+                        break;
+                    }
+                }
+
+                else
+                {
+                    //MOSTRA TODOS OS CODIGOS
+                    StreamReader rd2 = new StreamReader(@"C:\Clientes\TodosClientes.txt");
+                    while (!rd2.EndOfStream)
+                    {
+                        string Linha = rd2.ReadLine();
+                        Console.WriteLine("\t" + Linha);
+                    }
+                    rd2.Close();
+
+                    Console.WriteLine("\n\tDigite o codigo do cliente ");
+                    Console.Write("\tou digite [0] para voltar para o menu: ");
+                    while (!int.TryParse(Console.ReadLine(), out codCadastro))
+                    {
+                        Console.Write("\tDigite o código novamente: ");
+                    }
+                    //SE O ARQUIVO TXT DESSE CÓDIGO NÃO EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                    while ((!File.Exists(@"C:\Clientes\Cliente_Codigo" + codCadastro + ".txt")) && codCadastro != 0)
+                    {
+                        Console.WriteLine("\n\tEsse código não existe. Digite novamente o codigo do cliente ");
+                        Console.Write("\tou digite [0] para voltar ao menu: ");
+                        while (!int.TryParse(Console.ReadLine(), out codCadastro))
+                        {
+                            Console.Write("\tDigite o código novamente: ");
+                        }
+                        if (codCadastro == 0)
+                        {
+                            break;
+                        }
+                    }
+
+
+                    if (codCadastro == 0)
+                    {
+                        Console.WriteLine("\n\tVocê está voltando para o menu.. ");
+                    }
+                    else
+                    {
+                        //MOSTRA TODOS O ARQUIVO DO CLIENTE
+                        StreamReader rd = new StreamReader(@"C:\Clientes\Cliente_Codigo" + codCadastro + ".txt");
+
+                        while (!rd.EndOfStream)
+                        {
+                            string Linha = rd.ReadLine();
+                            Console.WriteLine("\t" + Linha);
+                        }
+                        rd.Close();
+                        Console.WriteLine("\n\tDigite enter para continuar.");
+                        Console.ReadKey();
+                    }
+                }
+
+            } while (codCadastro != 0);
+        }//fim CONSULTA CLIENTE
+
+
+        //------------------ CLASSE COM O CADASTRO DO FUNCIONÁRIO -----------------------------
+        private static void CadastroFuncionario()
+        {
+            {
+
+                //Declarando as variáveis
+                int codigofun = 0, telefone;
+                string nome, sobrenome, email, endereco, bairro, cidade, data, estado;
+                char sexo;
+                double cpf, cep;
+
+
+                //LOOP DO CADASTRO
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n= - = - = - = - = - = -  CADASTRO DO FUNCIONÁRIO = - = - = - = - = - = - ");
+                    Console.WriteLine("\n\tDigite o código para cadastrar o Funcionario ou ");
+                    Console.Write("\tdigite [0] para voltar ao menu: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codigofun)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                    }
+
+                    //SE O ARQUIVO TXT DESSE CÓDIGO JÁ EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                    while (File.Exists(@"C:\Cadastro_Funcionario\funcionarios" + codigofun + ".txt"))
+                    {
+                        Console.WriteLine("\n\tEsse código já existe.");
+                        Console.WriteLine("\tEntre na consulta do funcionário para verificar os códigos existentes ou ");
+                        Console.Write("\tdigite novamente o codigo do funcionário ou digite [0] para voltar ao menu: ");
+                        while (!int.TryParse(Console.ReadLine(), out codigofun))
+                        {
+                            Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                        }
+
+                        if (codigofun == 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    //OPÇAO DE VOLTAR PARA O MENU
+                    if (codigofun == 0)
+                    {
+                        Console.Write("\tVoltando ao menu anterior...");
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o nome: ");
+                        nome = Console.ReadLine();
+                        while (nome == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha: ");
+                            nome = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o sobrenome: ");
+                        sobrenome = Console.ReadLine();
+                        while (sobrenome == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                            sobrenome = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o seu gênero (M/F/I): ");
+                        char.TryParse(Console.ReadLine(), out sexo);
+                        while ((sexo != 'M') && (sexo != 'm') && (sexo != 'F') && (sexo != 'f') && (sexo != 'I') && (sexo != 'i')) //certifica se o sexo é válido
+                        {
+                            Console.Write("\tEscolha uma das opções seguintes (M/F/I): ");
+                            char.TryParse(Console.ReadLine(), out sexo);
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a data de nascimento: ");
+                        data = Console.ReadLine();
+                        while (data == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                            data = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o CPF: ");
+                        while (!(double.TryParse(Console.ReadLine(), out cpf)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha: ");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o email: ");
+                        email = Console.ReadLine();
+                        while (email == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                            email = Console.ReadLine();
+
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o telefone: ");
+                        while (!(int.TryParse(Console.ReadLine(), out telefone)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha: ");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o endereço: ");
+                        endereco = Console.ReadLine();
+                        while (endereco == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                            endereco = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o CEP: ");
+                        while (!(double.TryParse(Console.ReadLine(), out cep)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o bairro: ");
+                        bairro = Console.ReadLine();
+                        while (bairro == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                            bairro = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a cidade: ");
+                        cidade = Console.ReadLine();
+                        while (cidade == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            cidade = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o estado(UF): ");
+                        estado = Console.ReadLine();
+                        while (estado == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            estado = Console.ReadLine();
+                        }
+
+                        //CRIAR PASTA
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Cadastro_Funcionario");
+                        if (!dir.Exists)
+                            try
+                            {
+
+                                dir.Create();
+                                Console.WriteLine("\n\tDiretório criado com sucesso.");
+                            }
+
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Não foi possível criar o diretório: {0}", e.ToString());
+                            }
+                            finally { }
+
+                        FileStream CriaArquivo = new FileStream(@"C:\Cadastro_Funcionario\funcionarios" + codigofun + ".txt", FileMode.Append);
+
+                        StreamWriter Arquivo = new StreamWriter(CriaArquivo, Encoding.ASCII);
+                        Arquivo.WriteLine("");
+                        Arquivo.Write("= - = - = - = - = - = - Novo Registro de Funcionario: " + nome + "- = - = - = - = - = - = - =");
+                        Arquivo.WriteLine("");
+                        Arquivo.Write("Codigo: "); Arquivo.WriteLine(Convert.ToString(codigofun));
+                        Arquivo.Write("Nome: "); Arquivo.WriteLine(nome);
+                        Arquivo.Write("Sobrenome: "); Arquivo.WriteLine(sobrenome);
+                        Arquivo.Write("Sexo: "); Arquivo.WriteLine(sexo);
+                        Arquivo.Write("Endereco: "); Arquivo.WriteLine(endereco);
+                        Arquivo.Write("Bairro: "); Arquivo.WriteLine(bairro);
+                        Arquivo.Write("CEP: "); Arquivo.WriteLine(Convert.ToString(cep));
+                        Arquivo.Write("Cidade: "); Arquivo.WriteLine(cidade);
+                        Arquivo.Write("Estado: "); Arquivo.WriteLine(estado);
+                        Arquivo.Write("Telefone: "); Arquivo.WriteLine(Convert.ToString(telefone));
+                        Arquivo.Write("Data de Nascimento: "); Arquivo.WriteLine(data);
+                        Arquivo.Write("CPF: "); Arquivo.WriteLine(Convert.ToString(cpf));
+                        Arquivo.Write("Email: "); Arquivo.WriteLine(email);
+
+                        Arquivo.Flush();
+                        Arquivo.Close();
+                        CriaArquivo.Close();
+
+                        //NOVO ARQUIVO QUE IRA SALVAR SÓ OS CODIGOS PARA SER VISUALIZADO NA CONSULTA PACOTE
+                        FileStream CriaArquivo2 = new FileStream(@"C:\Cadastro_Funcionario\TodosFuncionarios.txt", FileMode.Append);
+                        StreamWriter Arquivo2 = new StreamWriter(CriaArquivo2, Encoding.ASCII);
+                        Arquivo2.WriteLine(""); ;
+                        Arquivo2.Write("Codigo do funcionario: "); Arquivo2.WriteLine(Convert.ToString(codigofun));
+
+                        Arquivo2.Flush();
+                        Arquivo2.Close();
+                        CriaArquivo2.Close();
+
+                        Console.WriteLine("\n\tFuncionario cadastrado com sucesso!\n");
+                        Console.WriteLine("\n\tAperte enter para continuar.");
+                        Console.ReadKey();
+                        Thread.Sleep(600);
+                        Console.Clear();
+                    }
+                }
+                // CONDIÇÃO DO LOOP CADASTRO 
+                while (codigofun != 0);
+            }
+
+        }//FINAL DO CADASTRO FUNCIONARIO
+
+        //-------------------------------------------------------------------------------------------
+        //------------------ CLASSE COM O CONSULTA DO FUNCIONÁRIO -----------------------------
+        private static void ConsultaFuncionario()
+        {
+
+            int codigofun;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("\n\n- = - = - = - = - = - = - = CONSULTA DO FUNCIONARIO - = - = - = - = - = - = - =");
+
+                //SE O ARQUIVO TXT NÃO EXISTIR IRA AVISAR e permitir voltar ao menu
+                if (!(File.Exists(@"C:\Cadastro_Funcionario\TodosFuncionarios.txt")))
+                {
+                    Console.WriteLine("\n\tO arquivo com dos registro não foi encontrado por favor faça um registro.");
+                    Console.Write("\tdigite [0] para voltar ao menu: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codigofun)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite novamente: ");
+                    }
+                    if (codigofun == 0)
+                    {
+                        break;
+                    }
+                }
+
+                else
+                {
+
+                    //MOSTRA TODOS OS CODIGOS
+                    StreamReader rd2 = new StreamReader(@"C:\Cadastro_Funcionario\TodosFuncionarios.txt");
+                    while (!rd2.EndOfStream)
+                    {
+                        string Linha = rd2.ReadLine();
+                        Console.WriteLine("\t" + Linha);
+                    }
+                    rd2.Close();
+
+                    Console.WriteLine("\n\tDigite o codigo do funcionário ");
+                    Console.Write("\tou digite [0] para voltar para o menu: ");
+                    //codigofun = int.Parse(Console.ReadLine());
+                    while (!int.TryParse(Console.ReadLine(), out codigofun))
+                    {
+                        Console.Write("\tDigite o código novamente: ");
+                    }
+                    //SE O ARQUIVO TXT DESSE CÓDIGO NÃO EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                    while ((!File.Exists(@"C:\Cadastro_Funcionario\funcionarios" + codigofun + ".txt")) && codigofun != 0)
+                    {
+                        Console.WriteLine("\n\tEsse código não existe. Digite novamente o codigo do funcionário ");
+                        Console.Write("\tou digite [0] para voltar ao menu: ");
+                        while (!int.TryParse(Console.ReadLine(), out codigofun))
+                        {
+                            Console.Write("\tDigite o código novamente: ");
+                        }
+                        if (codigofun == 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    if (codigofun == 0)
+                    {
+                        Console.WriteLine("\n\tVocê está voltando para o menu.. ");
+                    }
+                    else
+                    {
+                        //MOSTRA TODOS O ARQUIVO DO FUNCIONARIO
+                        StreamReader rd = new StreamReader(@"C:\Cadastro_Funcionario\funcionarios" + codigofun + ".txt");
+                        while (!rd.EndOfStream)
+                        {
+                            string Linha = rd.ReadLine();
+                            Console.WriteLine("\t" + Linha);
+                        }
+                        rd.Close();
+
+                        Console.WriteLine("\n\tDigite enter para continuar.");
+                        Console.ReadKey();
+                    }
+                }
+            } while (codigofun != 0);
+        }//FIM CONSULTA FUNCIONARIO
+
+
+        //------------------ CLASSE COM O CADASTRO DO PACOTE -----------------------------
+        private static void CadastroPacote()
+        {
+            {
+                //DECLARANDO AS VARIÁVEIS
+                int codPacote = 0, passageiros, codcliente;
+                string origem, destino, pdata, horariop, tiptrans, parada, classe, seg, idavolta;
+
+                //COMEÇANDO O LOOPING DO CADASTRO
+
+
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n = - = - = - = - = - = - CADASTRO DO PACOTE = - = - = - = - = - = - \n");
+
+                    Console.WriteLine("");
+                    Console.WriteLine("\n\tDigite o código para cadastrar o pacote, ");
+                    Console.WriteLine("\tesse código será usado durante todo o processo.");
+                    Console.WriteLine("\tSe NÃO possuir cadastro no sistema ");
+                    Console.Write("\tdigite [0] para voltar ao menu: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codPacote)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                    }
+
+                    //SE O ARQUIVO TXT DESSE CÓDIGO JÁ EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                    while (File.Exists(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt"))
+                    {
+                        Console.WriteLine("\n\tEsse código de pacote já existe. ");
+                        Console.WriteLine("\tEntre na consulta do pacote para verificar os códigos existentes ou");
+                        Console.Write("\tdigite novamente o codigo do pacote ou digite [0] para voltar ao menu: ");
+                        while (!int.TryParse(Console.ReadLine(), out codPacote))
+                        {
+                            Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                        }
+
+                        if (codPacote == 0)
+                        {
+                            break;
+
+                        }
+                    }
+
+                    // A OPÇÃO DE VOLTAR AO MENU
+                    if (codPacote == 0)
+                    {
+                        Console.Write("\tVoltando ao menu...");
+
+                    }
+                    //COLOQUE UM CODIGO PARA CONTINUAR
+                    else
+                    {
+                        Console.WriteLine("");
+                        Console.Write(" \tDigite o seu código de cliente: ");
+                        while (!(int.TryParse(Console.ReadLine(), out codcliente)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write(" \tDigite a origem: ");
+                        origem = Console.ReadLine();
+                        while (origem == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            origem = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write(" \tDigite o destino: ");
+                        destino = Console.ReadLine();
+                        while (destino == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            destino = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write(" \tData de partida: ");
+                        pdata = Console.ReadLine();
+                        while (pdata == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            pdata = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write(" \tVocê deseja passagem de ida e volta? (S/N): ");
+                        idavolta = Console.ReadLine();
+                        while (idavolta != "s" && idavolta != "S" && idavolta != "N" && idavolta != "n")
+                        {
+                            Console.Write(" \tVocê deseja passagem de ida e volta? (S/N): ");
+                            idavolta = Console.ReadLine();
+                        }
+
+                        if (idavolta == "s" || idavolta == "S")
+                        {
+                            Console.WriteLine("");
+                            Console.Write(" \tDigite da data de retorno: ");
+                            idavolta = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write(" \tHorário de partida: ");
+                        horariop = Console.ReadLine();
+                        while (horariop == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            horariop = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write(" \tDigite a quantidade de passageiros: ");
+                        while (!(int.TryParse(Console.ReadLine(), out passageiros)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write(" \tDigite o tipo de transporte (Áereo ou Rodoviário): ");
+                        tiptrans = Console.ReadLine();
+                        while (tiptrans == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            tiptrans = Console.ReadLine();
+
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write(" \tVocê deseja uma viagem com escalas? (S/N): ");
+                        parada = Console.ReadLine();
+                        while (parada != "s" && parada != "S" && parada != "N" && parada != "n")
+                        {
+                            Console.Write(" \tVocê deseja uma viagem com escalas? (S/N): ");
+                            parada = Console.ReadLine();
+                        }
+
+                        if (parada == "s" || parada == "S")
+                        {
+
+                            Console.WriteLine("");
+                            Console.Write(" \tQuantas paradas?: ");
+                            parada = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.WriteLine(" \tQual é a classe de sua passagem?");
+                        Console.Write(" \t(1-Primeira Classe/2-Executiva/3-Economica): ");
+                        classe = Console.ReadLine();
+                        while (classe != "1" && classe != "2" && classe != "3")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha: ");
+                            classe = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write(" \tDeseja adicionar o seguro? (S/N): ");
+                        seg = Console.ReadLine();
+                        while (seg != "s" && seg != "S" && seg != "N" && seg != "n")
+                        {
+                            Console.Write(" \tDeseja adicionar o seguro? (S/N)? (S/N): ");
+                            seg = Console.ReadLine();
+                        }
+
+                        if (seg == "s" || seg == "S")
+                        {
+                            Console.WriteLine("\t\t___________________________________________");
+                            Console.WriteLine("\t\t 1 - Seguro Viagem ");
+                            Console.WriteLine("\t\t 2 - Seguro Bagagem ");
+                            Console.WriteLine("\t\t 3 - Seguro de Vida ");
+                            Console.WriteLine("\t\t 4 - Assistência Médica");
+                            Console.WriteLine("\t\t 5 - Seguro para Extravio de Documentos");
+                            Console.WriteLine("\t\t 6 - Localização de Bagagem");
+                            Console.WriteLine("\t\t 7 - Seguro Estadia");
+                            Console.WriteLine("\t\t 8 - Seguro Responsabilidade por Acidente  ");
+                            Console.WriteLine("\t\t 9 - Todos os seguros ");
+                            Console.WriteLine("\t\t_____________________________________________");
+                            Console.Write("\t\t Escolha um dos seguros acima: ");
+                            seg = Console.ReadLine();
+
+                        }
+
+
+                        //CRIAR PASTA PARA ARMAZENAR DADOS
+
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Clientes");
+
+                        if (!dir.Exists)
+                            try
+                            {
+                                //PARA SE A PASTA NAO FOR CRIADA
+                                dir.Create();
+                                Console.WriteLine("\n\tDiretório criado com sucesso.");
+                            }
+
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("\n\tNão foi possível criar o diretório: {0}", e.ToString());
+                            }
+                            finally { }
+
+                        //SALVARA OS DADOS DE CADA PACOTE EM UM ARQUIVO DIFERENTE
+                        FileStream CriaArquivo = new FileStream(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt", FileMode.Append);
+                        //SALVANDO DADOS
+                        StreamWriter Arquivo = new StreamWriter(CriaArquivo, Encoding.ASCII);
+                        Arquivo.WriteLine("");
+                        Arquivo.WriteLine("= REGISTRO DO PACOTE - = - = - = - = - = - = - =");
+                        Arquivo.WriteLine("");
+                        Arquivo.Write("Codigo: "); Arquivo.WriteLine(Convert.ToString(codPacote));
+                        Arquivo.Write("Codigo do cliente: "); Arquivo.WriteLine(Convert.ToString(codcliente));
+                        Arquivo.Write("Origem: "); Arquivo.WriteLine(origem);
+                        Arquivo.Write("Destino: "); Arquivo.WriteLine(destino);
+                        Arquivo.Write("Horario de Partida: "); Arquivo.WriteLine(horariop);
+                        Arquivo.Write("Data de Partida: "); Arquivo.WriteLine(pdata);
+                        Arquivo.Write("Volta: "); Arquivo.WriteLine(idavolta);
+                        Arquivo.Write("Tipo de Transporte: "); Arquivo.WriteLine(tiptrans);
+                        Arquivo.Write("Escalas: "); Arquivo.WriteLine(parada);
+                        Arquivo.Write("Classe: "); Arquivo.WriteLine(classe);
+                        Arquivo.Write("Seguro: "); Arquivo.WriteLine(seg);
+
+
+                        Arquivo.Flush();
+                        Arquivo.Close();
+                        CriaArquivo.Close();
+
+                        //NOVO ARQUIVO QUE IRA SALVAR SÓ OS CODIGOS PARA SER VISUALIZADO NA CONSULTA PACOTE
+                        FileStream CriaArquivo2 = new FileStream(@"C:\Clientes\TodosPacotes.txt", FileMode.Append);
+                        StreamWriter Arquivo2 = new StreamWriter(CriaArquivo2, Encoding.ASCII);
+                        Arquivo2.WriteLine("");
+                        Arquivo2.Write("Codigo: "); Arquivo2.WriteLine(Convert.ToString(codPacote));
+
+                        Arquivo2.Flush();
+                        Arquivo2.Close();
+                        CriaArquivo2.Close();
+
+                        Console.WriteLine("\n\tPacote cadastrado com sucesso!\n");
+                        Console.WriteLine("\n\tPara concluir seu pacote volte ao menu e faça o cadastro dos dados de hospedagem.\n");
+                        Console.WriteLine("\n\tAperte enter para continuar.");
+                        Console.ReadKey();
+                        Thread.Sleep(600);
+                        Console.Clear();
+                        //Console.ReadKey();
+                    }
+                    // CONDIÇÃO DO LOOP DO CADASTRO
+                } while (codPacote != 0);
+            }
+        }//FINAL DO CADASTRO DO PACOTE
+
+        //------------------ CLASSE COM O CONSULTA DA PACOTE -----------------------------
+        static void ConsultaPacote()
+        {
+            {
+                int codPacote;
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n- = - = - = - = - = - = - = CONSULTA DO PACOTE - = - = - = - = - = - = - =");
+
+                    //SE O ARQUIVO TXT NÃO EXISTIR IRA AVISAR e permitir voltar ao menu
+                    if (!(File.Exists(@"C:\Clientes\TodosPacotes.txt")))
+                    {
+                        Console.WriteLine("\n\tO arquivo com dos registro não foi encontrado por favor faça um registro.");
+                        Console.Write("\tdigite [0] para voltar ao menu: ");
+                        while (!(int.TryParse(Console.ReadLine(), out codPacote)))
+                        {
+                            Console.Write("\tOpção não numérica. Digite novamente: ");
+                        }
+                        if (codPacote == 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("\n\t\t\t TODOS OS PACOTES ");
+                        //MOSTRA TODOS OS CODIGOS
+                        StreamReader rd2 = new StreamReader(@"C:\Clientes\TodosPacotes.txt");
+                        while (!rd2.EndOfStream)
+                        {
+                            string Linha = rd2.ReadLine();
+                            Console.WriteLine("\t" + Linha);
+                        }
+                        rd2.Close();
+
+                        Console.WriteLine("\n\tDigite o codigo do pacote ");
+                        Console.Write("\tou digite [0] para voltar para o menu: ");
+                        //CodPacote = int.Parse(Console.ReadLine());
+                        while (!(int.TryParse(Console.ReadLine(), out codPacote)))
+                        {
+                            Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                        }
+
+                        //SE O ARQUIVO TXT DESSE CÓDIGO NÃO EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                        while ((!File.Exists(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt")) && codPacote != 0)
+                        {
+                            Console.WriteLine("\n\tEsse código não existe. Digite novamente o codigo do pacote: ");
+                            Console.Write("\tou digite [0] para voltar ao menu: ");
+                            while (!int.TryParse(Console.ReadLine(), out codPacote))
+                            {
+                                Console.Write("\tDigite o código novamente: ");
+                            }
+                            if (codPacote == 0)
+                            {
+                                break;
+                            }
+                        }
+
+                        if (codPacote == 0)
+                        {
+                            Console.WriteLine("\n\tVocê está voltando para o menu.. ");
+                        }
+                        else
+                        {
+                            //MOSTRA TODOS O ARQUIVO DO PACOTE
+                            StreamReader rd = new StreamReader(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt");
+                            while (!rd.EndOfStream)
+                            {
+                                string Linha = rd.ReadLine();
+                                Console.WriteLine("\t" + Linha);
+                            }
+                            rd.Close();
+
+                            Console.WriteLine("\n\tDigite enter para continuar.");
+                            Console.ReadKey();
+                        }
+                    }
+                } while (codPacote != 0);
+            }
+        }//FINAL DA CONSULTA PACOTE
+
+
+        //------------------ CLASSE COM O CADASTRO DO HOTEL -----------------------------
+        private static void CadastroHotel()
+        {
+            {
+                //DECLARANDO AS VARIÁVEIS
+                int codHotel = 0, classificacao;
+                string nome, endereco;
+
+
+                //COMEÇANDO O LOOPING DO CADASTRO
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n- = - = - = - = - = - = - = CADASTRO DO HOTEL - = - = - = - = - = - = - = \n");
+                    Console.WriteLine("\n\tDigite o código para cadastrar o Hotel ou");
+                    Console.Write("\tdigite [0] para voltar ao menu: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codHotel)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                    }
+                    // A OPÇÃO DE VOLTAR AO MENU
+                    if (codHotel == 0)
+                    {
+                        Console.WriteLine("\n\tVoltando ao menu anterior...");
+                    }
+                    //COLOQUE UM CODIGO PARA CONTINUAR
+                    else
+                    {
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o nome: ");
+                        nome = Console.ReadLine();
+                        while (nome == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            nome = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.WriteLine("\t___________________________________________");
+                        Console.WriteLine("\t 1 Estrela");
+                        Console.WriteLine("\t 2 Estrelas");
+                        Console.WriteLine("\t 3 Estrelas");
+                        Console.WriteLine("\t 4 Estrelas");
+                        Console.WriteLine("\t 5 Estrelas");
+                        Console.WriteLine("\t_____________________________________________");
+                        Console.Write("\tDigite a classificação: ");
+                        while ((!int.TryParse(Console.ReadLine(), out classificacao)) || classificacao < 1 || classificacao > 5)
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o endereço: ");
+                        endereco = Console.ReadLine();
+                        while (endereco == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            endereco = Console.ReadLine();
+                        }
+
+
+                        //CRIAR PASTA PARA ARMAZENAR DADOS
+
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Hotel");
+
+                        if (!dir.Exists)
+                            try
+                            {
+                                //PARA SE A PASTA NAO FOR CRIADA
+                                dir.Create();
+                                Console.WriteLine("\n\tDiretório criado com sucesso.");
+                            }
+
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("\n\tNão foi possível criar o diretório: {0}", e.ToString());
+                            }
+                            finally { }
+
+
+                        FileStream CriaArquivo = new FileStream(@"C:\Hotel\Hoteis.txt", FileMode.Append);
+                        //SALVANDO DADOS
+                        StreamWriter Arquivo = new StreamWriter(CriaArquivo, Encoding.ASCII);
+                        Arquivo.WriteLine("");
+                        Arquivo.WriteLine("REGISTRO DO HOTEL - = - = - = - = - = - = - =");
+                        Arquivo.WriteLine("");
+                        Arquivo.Write("Codigo: "); Arquivo.WriteLine(Convert.ToString(codHotel));
+                        Arquivo.Write("Nome: "); Arquivo.WriteLine(nome);
+                        Arquivo.Write("Classificacao: "); Arquivo.WriteLine(classificacao);
+                        Arquivo.Write("Endereco: "); Arquivo.WriteLine(endereco);
+
+                        Arquivo.Flush();
+                        Arquivo.Close();
+                        CriaArquivo.Close();
+
+                        Console.WriteLine("\n\tHotel cadastrado com sucesso!\n");
+                        Console.WriteLine("\n\tAperte enter para continuar.");
+                        Console.ReadKey();
+                        Thread.Sleep(600);
+                        Console.Clear();
+                    }
+                }
+                // CONDIÇÃO DO LOOP DO CADASTRO
+                while (codHotel != 0);
+            }
+        }//FINAL DO CADASTRO DO HOTEL
+
+        //------------------ CLASSE COM O CADASTRO DA HOSPEDAGEM -----------------------------
+        private static void CadastroHospedagem()
+        {
+            {
+                //DECLARANDO AS VARIÁVEIS
+                int codPacote = 0, quantidade;
+                string checkin, codHotel, checkout, refeicao, nome, categoria;
+
+
+                //COMEÇANDO O LOOPING DO CADASTRO
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n\n - = - = - = - = - = - = - = CADASTRO DA HOSPEDAGEM - = - = - = - = - = - = - = \n");
+                    Console.WriteLine("\n\tDigite o código do seu pacote para cadastrar a hospedagem.");
+                    Console.WriteLine("\tSe NÃO tiver um pacote cadastrado por favor ");
+                    Console.Write("\tdigite [0] para voltar ao menu principal: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codPacote)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                    }
+
+                    //SE O ARQUIVO TXT DESSE CÓDIGO NÃO EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                    while ((!File.Exists(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt")) && codPacote != 0)
+                    {
+                        Console.WriteLine("\n\tEsse código não existe.");
+                        Console.WriteLine("\tEntre na consulta do pacote para verificar os códigos existentes ou");
+                        Console.Write("\tdigite novamente o codigo do pacote ou digite [0] para voltar ao menu: ");
+                        while (!int.TryParse(Console.ReadLine(), out codPacote))
+                        {
+                            Console.Write("\tDigite o código novamente: ");
+                        }
+
+                        if (codPacote == 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    //SE O ARQUIVO TXT DESSE DOS HOTEIS NÃO EXISTIR IRA AVISAR e permitir voltar ao menu
+                    while (!(File.Exists(@"C:\Hotel\Hoteis.txt")))
+                    {
+                        Console.WriteLine("\n\tO arquivo com os hoteis registrados não foi encontrado");
+                        Console.Write("\tdigite [0] para voltar ao menu: ");
+                        while (!(int.TryParse(Console.ReadLine(), out codPacote)))
+                        {
+                            Console.Write("\tOpção não numérica. Digite novamente: ");
+                        }
+                        if (codPacote == 0)
+                        {
+                            break;
+                        }
+                    }
+
+                    // A OPÇÃO DE VOLTAR AO MENU
+                    if (codPacote == 0)
+                    {
+                        Console.WriteLine("\n\tVoltando ao menu...");
+                    }
+                    //COLOQUE UM CODIGO PARA CONTINUAR
+                    else
+                    {
+
+                        //CONSULTA DOS HOTEIS
+                        StreamReader rd = new StreamReader(@"C:\Hotel\Hoteis.txt");
+                        while (!rd.EndOfStream)
+                        {
+                            string Linha = rd.ReadLine();
+                            Console.WriteLine("\t" + Linha);
+                        }
+                        rd.Close();
+
+                        Console.WriteLine("");
+                        Console.Write("\tEscolha um hotel: ");
+                        codHotel = Console.ReadLine();
+
+                        while (codHotel == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                            codHotel = Console.ReadLine();
+
+                        }
+
+
+                        //DADOS DE HOSPEDAGEM
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a categoria do quarto (suite, solteiro, casal): ");
+                        categoria = Console.ReadLine();
+
+                        while (categoria == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                            categoria = Console.ReadLine();
+
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a quantidade de quartos: ");
+                        while (!(int.TryParse(Console.ReadLine(), out quantidade)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha:");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o check-in (data de entrada): ");
+                        checkin = Console.ReadLine();
+                        while (checkin == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            checkin = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o check-out (data de saida) : ");
+                        checkout = Console.ReadLine();
+                        while (checkout == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            checkout = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a refeicao que voce ira realizar no hotel: ");
+                        refeicao = Console.ReadLine();
+                        while (refeicao == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha ");
+                            nome = Console.ReadLine();
+                        }
+
+
+                        //CRIAR PASTA PARA ARMAZENAR DADOS
+
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Clientes");
+
+                        if (!dir.Exists)
+                            try
+                            {
+                                //PARA SE A PASTA NAO FOR CRIADA
+                                dir.Create();
+                                Console.WriteLine("\n\tDiretório criado com sucesso.");
+                            }
+
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("\n\tNão foi possível criar o diretório: {0}", e.ToString());
+                            }
+                            finally { }
+
+
+                        FileStream CriaArquivo = new FileStream(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt", FileMode.Append);
+                        //SALVANDO DADOS
+                        StreamWriter Arquivo = new StreamWriter(CriaArquivo, Encoding.ASCII);
+                        Arquivo.WriteLine("");
+                        Arquivo.WriteLine("= REGISTRO DA HOSPEDAGEM - = - = - = - = - = - = - =");
+                        Arquivo.WriteLine("");
+                        Arquivo.Write("Hotel : "); Arquivo.WriteLine(Convert.ToString(codHotel));
+                        Arquivo.Write("Codigo : "); Arquivo.WriteLine(Convert.ToString(codPacote));
+                        Arquivo.Write("Check-In : "); Arquivo.WriteLine(checkin);
+                        Arquivo.Write("Check-Out : "); Arquivo.WriteLine(checkout);
+                        Arquivo.Write("Categoria : "); Arquivo.WriteLine(categoria);
+                        Arquivo.Write("Refeicao : "); Arquivo.WriteLine(refeicao);
+
+                        Arquivo.Flush();
+                        Arquivo.Close();
+                        CriaArquivo.Close();
+
+                        //NOVO ARQUIVO QUE IRA SALVAR SÓ OS CODIGOS PARA SER VISUALIZADO NA CONSULTA PACOTE
+                        //FileStream CriaArquivo2 = new FileStream(@"C:\Clientes\TodosPacotes.txt", FileMode.Append);
+                        //StreamWriter Arquivo2 = new StreamWriter(CriaArquivo2, Encoding.ASCII);
+                        //Arquivo2.WriteLine("");
+                        //Arquivo2.Write("Codigo da Hospedagem: "); Arquivo2.WriteLine(Convert.ToString(codPacote));
+
+                        //Arquivo2.Flush();
+                        //Arquivo2.Close();
+                        //CriaArquivo2.Close();
+
+                        Console.WriteLine("\n\tHospedagem cadastrado com sucesso!\n");
+                        Console.WriteLine("\n\tPara concluir a compra volte ao menu e faça o cadastro dos dados de pagamento.\n");
+                        Console.WriteLine("\n\tAperte enter para continuar.");
+                        Console.ReadKey();
+                        Thread.Sleep(600);
+                        Console.Clear();
+                    }
+                }
+                // CONDIÇÃO DO LOOP DO CADASTRO
+                while (codPacote != 0);
+            }
+        }//FINAL DO CADASTRO DO HOSPEDAGEM
+
+        //------------------ CLASSE COM O CADASTRO DOS DADOS DE PAGAMENTO -----------------------------
+        static void DadosPagamento()
+        {
+            {
+                //DECLARANDO AS VARIÁVEIS
+                string tipag, band, nomecartao, parcelas;
+                int codseguranca, codPacote, datavalidade;
+                double numero;
+
+                //COMEÇANDO O LOOPING DO CADASTRO
+                do
+                {
+                    Console.Clear();
+                    Console.WriteLine(" \n\n- = - = - = - = - = - = - = CADASTRO DOS DADOS DE PAGAMENTO - = - = - = - = - = - = - = \n");
+
+                    Console.WriteLine("\n\tSe deseja confirmar a compra do pacote, " +
+                        "digite o codigo do pacote ou");
+                    Console.Write("\tdigite [0] para voltar ao menu: ");
+                    while (!(int.TryParse(Console.ReadLine(), out codPacote)))
+                    {
+                        Console.Write("\tOpção não numérica. Digite o Codigo novamente: ");
+                    }
+
+                    //SE O ARQUIVO TXT DESSE CÓDIGO NÃO EXISTE IRA FAZER COM QUE DIGITE NOVAMENTE
+                    while ((!File.Exists(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt")) && codPacote != 0)
+                    {
+                        Console.WriteLine("\n\tEsse código/pacote não existe.");
+                        Console.WriteLine("\tEntre na consulta do pacote para verificar os códigos existentes ou");
+                        Console.Write("\tdigite novamente o codigo do pacote ou digite [0] para voltar ao menu: ");
+                        while (!int.TryParse(Console.ReadLine(), out codPacote))
+                        {
+                            Console.Write("\tDigite o código novamente: ");
+                        }
+
+                        if (codPacote == 0) {
+                            break;
+                        }
+                    } 
+
+
+                    // A OPÇÃO DE VOLTAR AO MENU
+                    if (codPacote == 0)
+                    {
+                        Console.WriteLine("\n\tVoltando ao menu...");
+                    }
+                    //COLOQUE UM CODIGO PARA CONTINUAR
+                    else
+                    {
+                    
+                        //MOSTRAR OS DADOS DO TXT DO PACOTE
+                        StreamReader rd = new StreamReader(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt");
+                        while (!rd.EndOfStream)
+                        {
+                            string Linha = rd.ReadLine();
+                            Console.WriteLine("\t" + Linha);
+                        }
+                        rd.Close();
+
+
+                        Console.WriteLine("");
+                        Console.Write(" \tDeseja parcelar a compra? (S/N): ");
+                        tipag = Console.ReadLine();
+                        while (tipag != "s" && tipag != "S" && tipag != "N" && tipag != "n")
+                        {
+                            Console.Write(" \tDeseja parcelar a compra? (S/N): ");
+                            tipag = Console.ReadLine();
+                        }
+
+                        if (tipag == "s" || tipag == "S")
+                        {
+                            Console.WriteLine("");
+                            Console.Write(" \tQuantas parcelas?: ");
+                            parcelas = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite a bandeira do cartão (mastercard, visa, hipercard, elo): ");
+                        band = Console.ReadLine();
+                        while (band == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            band = Console.ReadLine();
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o nome impresso no cartão: ");
+                        nomecartao = Console.ReadLine();
+                        while (nomecartao == "")
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                            nomecartao = Console.ReadLine();
+                        }
+
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite número do cartão: ");
+                        while (!(double.TryParse(Console.ReadLine(), out numero)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write(" \tData de validade: ");
+                        while (!(int.TryParse(Console.ReadLine(), out datavalidade)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha. ");
+                        }
+
+                        Console.WriteLine("");
+                        Console.Write("\tDigite o codigo de segurança do cartão: ");
+                        while (!(int.TryParse(Console.ReadLine(), out codseguranca)))
+                        {
+                            Console.Write("\tCampo obrigatório não preenchido, por favor preencha.");
+                        }
+
+
+
+                        //CRIAR PASTA PARA ARMAZENAR DADOS
+
+                        DirectoryInfo dir = new DirectoryInfo(@"C:\Clientes");
+
+                        if (!dir.Exists)
+                            try
+                            {
+                                //PARA SE A PASTA NAO FOR CRIADA
+                                dir.Create();
+                                Console.WriteLine("\n\tDiretório criado com sucesso.");
+                            }
+
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("\n\tNão foi possível criar o diretório: {0}", e.ToString());
+                            }
+                            finally { }
+
+
+                        FileStream CriaArquivo = new FileStream(@"C:\Clientes\Cliente_Pacote" + codPacote + ".txt", FileMode.Append);
+                        //SALVANDO DADOS
+                        StreamWriter Arquivo = new StreamWriter(CriaArquivo, Encoding.ASCII);
+                        Arquivo.WriteLine("");
+                        Arquivo.WriteLine("= DADOS DE PAGAMENTO - = - = - = - = - = - = - =");
+                        Arquivo.WriteLine("");
+                        Arquivo.Write("Tipo de Pagamento:"); Arquivo.WriteLine(tipag);
+                        Arquivo.Write("Bandeira do Cartao : "); Arquivo.WriteLine(band);
+                        Arquivo.Write("Nome Impresso no Cartao : "); Arquivo.WriteLine(nomecartao);
+                        Arquivo.Write("Numero do Cartao : "); Arquivo.WriteLine(Convert.ToString(numero));
+                        Arquivo.Write("Data de Validade : "); Arquivo.WriteLine(datavalidade);
+                        Arquivo.Write("Codigo de Seguranca: "); Arquivo.WriteLine(Convert.ToString(codseguranca));
+
+                        Arquivo.Flush();
+                        Arquivo.Close();
+                        CriaArquivo.Close();
+
+                        //NOVO ARQUIVO QUE IRA SALVAR SÓ OS CODIGOS PARA SER VISUALIZADO NA CONSULTA PACOTE
+                        //FileStream CriaArquivo2 = new FileStream(@"C:\Clientes\TodosPacotes.txt", FileMode.Append);
+                        //StreamWriter Arquivo2 = new StreamWriter(CriaArquivo2, Encoding.ASCII);
+                        //Arquivo2.WriteLine("");
+                        //Arquivo2.Write("Codigo dos dados de pagamento: "); Arquivo2.WriteLine(Convert.ToString(codPacote));
+
+                        //Arquivo2.Flush();
+                        //Arquivo2.Close();
+                        //CriaArquivo2.Close();
+
+                        Console.WriteLine("\n\tOs dados de pagamento foram cadastrados com sucesso!\n");
+                        Thread.Sleep(600);
+                        Console.Clear();
+                        Console.WriteLine("\n\tAs informações do seu pacote serão enviadas no seu email.");
+                        Console.WriteLine("\n\tAperte enter para continuar.");
+                        Console.ReadKey();
+                    }
+                } while (codPacote != 0);
+
+            }//COLCHETE DA CLASSE PAGAMENTO
+        }//COLCHETE DA CLASSE PAGAMENTO
+
+
+    }
+}
