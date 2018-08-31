@@ -2,11 +2,11 @@
 
 Sistema de gestão para agência fictícia de turismo criado em console C# para conclusão do 1º modulo do curso de técnico informática.
 
-**Linguagens usadas neste projeto: C#**
+**Linguagens usadas neste projeto: C# (CONSOLE)**
 
 *Para o término do 1º modulo do curso de técnico de informática fomos orientados a realizar um projeto que envolveu a criação de uma empresa fictícia chamada GoodResults e a criação de um site para tal empresa que pode ser visualizado neste [link](https://esteves-esta.github.io).*
 
-Atráves dessa empresa realizei este projeto justamente com meu grupom projeto este que envolveu análise de sistema, projeção de banco de dados e um sistema para console na linguagem C#. O sistema de gestão realizado para esta agência de turismo fictícia que tem as seguintes funcionalidades:
+Atráves dessa empresa realizei este projeto justamente com meu grupo, projeto este que envolveu análise de sistema, projeção de banco de dados e um sistema para console na linguagem C#. O sistema de gestão realizado para esta agência de turismo fictícia que tem as seguintes funcionalidades:
 
 + Cadastro de Cliente
 - Consulta de Cliente
