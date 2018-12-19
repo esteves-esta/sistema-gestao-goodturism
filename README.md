@@ -39,23 +39,27 @@ O sistema tem as seguintes funcionalidades:
 
 
 
-##Tela Inicial
+### Tela Inicial
+
 ![Tela Inicial](https://github.com/esteves-esta/sistema-gestao-goodturism/blob/master/TELA1.PNG "Tela Inicial")
 
 ---
 
 
-##Tela de Menu
+### Tela de Menu
+
 ![Tela de Menu](https://github.com/esteves-esta/sistema-gestao-goodturism/blob/master/TELA2%20MENU.PNG "Tela de menu")
 
 ---
 
 
-##Exemplo de Cadastro
+### Exemplo de Cadastro
+
 ![Exemplo de Cadastro](https://github.com/esteves-esta/sistema-gestao-goodturism/blob/master/TELA3%20EXEMPLO%20DE%20CADASTRO.PNG "Tela de Cadastro de Cliente")
 
 ---
 
 
-##Exemplo de Consulta
+### Exemplo de Consulta
+
 ![Exemplo de Consulta](https://github.com/esteves-esta/sistema-gestao-goodturism/blob/master/TELA4%20EXEMPLO%20DE%20CONSULTA.PNG "Tela de Consultade Cliente")
