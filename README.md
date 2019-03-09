@@ -6,7 +6,8 @@ Sistema de Gerenciamento para Agências de Turismo criado em console C# para con
 
 *Para o término do 1º modulo do curso técnico de informática fomos orientados a realizar um projeto que envolveu a criação de uma empresa fictícia chamada GoodResults e a criação de um site para tal empresa que pode ser visualizado neste [link](https://esteves-esta.github.io).*
 
-Atráves dessa empresa realizei este projeto justamente com meu grupo, projeto que envolveu análise de sistema, projeção de banco de dados e um sistema para console na linguagem C#.
+Além do site realizamos em grupo um projeto que envolveu análise de sistema, banco de dados e um sistema para console na linguagem C#.
+
 O sistema tem as seguintes funcionalidades: 
 
 + Cadastro de Cliente
